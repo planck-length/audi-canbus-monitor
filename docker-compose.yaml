@@ -1,0 +1,40 @@
+services:
+  grafana:
+    image: grafana/grafana-enterprise
+    container_name: grafana
+    restart: unless-stopped
+    # if you are running as root then set it to 0
+    # else find the right id with the id -u command
+    user: '0'
+    ports:
+      - '3000:3000'
+    # adding the mount volume point which we create earlier
+    volumes:
+      - '$PWD/grafana:/var/lib/grafana'
+    environment:
+     - GF_SECURITY_ADMIN_USER=admin
+     - GF_SECURITY_ADMIN_PASSWORD=admin
+     - GF_DASHBOARDS_MIN_REFRESH_INTERVAL=1s
+    networks:
+      - grafana-influx-net
+  influxdb2:
+    image: influxdb:2
+    ports:
+      - 8086:8086
+    environment:
+      DOCKER_INFLUXDB_INIT_MODE: setup
+      DOCKER_INFLUXDB_INIT_ORG: vimac
+      DOCKER_INFLUXDB_INIT_BUCKET: can_monitoring
+      DOCKER_INFLUXDB_INIT_USERNAME: admin
+      DOCKER_INFLUXDB_INIT_PASSWORD: admin12345678
+    volumes:
+      - '$PWD/influxdb2:/etc/influxdb2'
+    networks:
+      - grafana-influx-net
+volumes:
+  influxdb2-data:
+  influxdb2-config:
+
+networks:
+  grafana-influx-net:
+    driver: bridge

@@ -1,0 +1,43 @@
+[package]
+name = "mcp2515-embassy"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]
+mcp2515 = { path = "../mcp2515-rs" }
+embedded-hal = "1.0"
+embedded-can = "0.4"
+embassy-executor = { version = "0.6.1", path = "../embassy/embassy-executor", features = [
+    "task-arena-size-32768",
+    "arch-cortex-m",
+    "executor-thread",
+    "defmt",
+    "integrated-timers",
+] }
+
+embassy-stm32 = { version = "0.1.0", features = [
+    "defmt",
+    "unstable-pac",
+    "stm32l476rg",
+    "memory-x",
+    "time-driver-tim3",
+    "exti",
+    "chrono",
+] }
+defmt = "*"
+heapless = "0.7"
+defmt-rtt = "*"
+cortex-m = { version = "0.7.6", features = ["critical-section-single-core"] }
+cortex-m-rt = "0.7.0"
+panic-probe = { version = "0.3", features = ["print-defmt"] }
+embassy-time = { package = "embassy-time", version = "0.3.2", features = [
+    "defmt-timestamp-uptime",
+    "tick-hz-32_768",
+] }
+slcan = { version = "*", path = "../slcan/" }
+lcd1602-rs = { version = "*", path = "../lcd1602-rs" }
+
+[patch.crates-io]
+# mcp2515 = { path = "../mcp2515-rs" }
+embassy-stm32 = { path = "../embassy/embassy-stm32" }
+embassy-time = { path = "../embassy/embassy-time" }
