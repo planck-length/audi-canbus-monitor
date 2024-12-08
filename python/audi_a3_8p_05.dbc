@@ -1,0 +1,20 @@
+BO_ 1365 ECU_04: 8 XXX
+ SG_ EngineSpeed  : 32|8@1+ (10,0) [0|8192] "rpm"  XXX
+
+BO_ 657 VehicleLockStatus: 5 XXX
+ SG_ LockStatus : 8|8@1+ (1,0) [0|255] "" XXX
+
+BO_ 1329 ECU_01: 4 XXX
+ SG_ COUNTER : 20|8@1+ (1,0) [0|15] ""  XXX
+
+BO_ 705 ECU_02: 5 XXX
+ SG_ SG1 : 5|16@1+ (1,0) [0|8192] ""  XXX
+
+BO_ 859 ECU_03: 8 XXX
+ SG_ SG2 : 12|44@1+ (1,0) [0|8192] ""  XXX
+
+BO_ 1393 ECU_05: 6 XXX
+ SG_ SG2 : 0|16@1+ (1,0) [0|8192] ""  XXX
+
+BO_ 1136 ECU_06: 5 XXX
+ SG_ wind : 0|40@1+ (1,0) [0|8192] ""  XXX
