@@ -42,9 +42,9 @@ async fn main(_spawner: Spawner) -> ! {
     can.init(
         &mut Delay,
         mcp2515::Settings {
-            mode: OpMode::Normal,         // Loopback for testing and example
-            can_speed: CanSpeed::Kbps100, // Many options supported.
-            mcp_speed: McpSpeed::MHz8,    // Currently 16MHz and 8MHz chips are supported.
+            mode: OpMode::Normal,
+            can_speed: CanSpeed::Kbps100,
+            mcp_speed: McpSpeed::MHz8,
             clkout_en: true,
         },
     )
